@@ -6,6 +6,7 @@ document.addEventListener("keydown", function (event) {
   });
 
 const movementSound = document.getElementById("movementSound");
+const gameoverSound = document.getElementById("gameoverSound");
 const dodger = document.getElementById("dodger");
 const gameContainer = dodger.parentElement;
 
@@ -30,6 +31,8 @@ function playGameOverSound() {
     if (left > 0) {
       dodger.style.left = `${left - 10}px`;
       playSoundOnMovement();
+    }  else {
+        playGameOverSound();
     }
   }
 
@@ -43,6 +46,8 @@ function playGameOverSound() {
     if (left + dodgerWidth < containerWidth) {
       dodger.style.left = `${left + 10}px`;
       playSoundOnMovement();
+    }  else {
+        playGameOverSound();
     }
   }
 
@@ -56,6 +61,8 @@ function moveDodgerUp() {
     if (bottom < containerHeight - dodgerHeight) {
         dodger.style.bottom = `${bottom + 10}px`;
         playSoundOnMovement();
+    }  else {
+        playGameOverSound();
     }
 }
 
@@ -69,6 +76,8 @@ function moveDodgerDown() {
     if (bottom < containerHeight - dodgerHeight) {
         dodger.style.bottom = `${bottom - 10}px`;
         playSoundOnMovement();
+    }  else {
+        playGameOverSound();
     }
 }
 
