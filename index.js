@@ -30,6 +30,8 @@ function playGameOverSound() {
   
     if (left > 0) {
       dodger.style.left = `${left - 10}px`;
+      dodger.style.transform = "rotate(-180deg)";
+      dodger.style.transform = "scaleX(-1)";
       playSoundOnMovement();
     }  else {
         playGameOverSound();
@@ -45,6 +47,8 @@ function playGameOverSound() {
   
     if (left + dodgerWidth < containerWidth) {
       dodger.style.left = `${left + 10}px`;
+      dodger.style.transform = "rotate(0deg)";
+
       playSoundOnMovement();
     }  else {
         playGameOverSound();
@@ -60,6 +64,7 @@ function moveDodgerUp() {
 
     if (bottom < containerHeight - dodgerHeight) {
         dodger.style.bottom = `${bottom + 10}px`;
+        dodger.style.transform = "rotate(-90deg)";
         playSoundOnMovement();
     }  else {
         playGameOverSound();
@@ -75,6 +80,7 @@ function moveDodgerDown() {
 
     if (bottom < containerHeight - dodgerHeight) {
         dodger.style.bottom = `${bottom - 10}px`;
+        dodger.style.transform = "rotate(90deg)";
         playSoundOnMovement();
     }  else {
         playGameOverSound();
@@ -86,6 +92,7 @@ function moveDodgerDown() {
       moveDodgerLeft();
     } else if (e.key === "ArrowRight") {
         moveDodgerRight();
+        
     } else if (e.key === "ArrowUp") {
         moveDodgerUp();
     } else if (e.key === "ArrowDown") {
