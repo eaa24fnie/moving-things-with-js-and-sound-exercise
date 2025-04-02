@@ -111,7 +111,7 @@ the game field by changing its `left` attribute:
 dodger.style.left = "0px";
 ```
 
-You should see the dodger nestled up against the bottom left corner of the game
+You should see the dodger nestled ups against the bottom left corner of the game
 field.
 
 ## Demonstrate How to Move an Element in Response to a Browser Event
