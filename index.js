@@ -100,7 +100,7 @@ function moveDodgerDown() {
     const containerHeight = gameContainer.clientHeight;
     const dodgerHeight = dodger.clientHeight;
 
-    if (bottom < containerHeight - dodgerHeight) {
+    if (bottom > 0) {  
         dodger.style.bottom = `${bottom - 10}px`;
         dodger.style.transform = "rotate(90deg)";
         playSoundOnMovement();
