@@ -5,10 +5,13 @@ document.addEventListener("keydown", function (event) {
     console.log(event);
   });
 
+
 const movementSound = document.getElementById("movementSound");
 const gameoverSound = document.getElementById("gameoverSound");
 const dodger = document.getElementById("dodger");
 const gameContainer = dodger.parentElement;
+
+dodger.style.bottom = "200px";
 
 function playSoundOnMovement() {
     if (movementSound) {
