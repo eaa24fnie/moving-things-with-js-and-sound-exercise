@@ -55,3 +55,11 @@
   position: absolute;
   width: 9px;
 }
+
+
+#object {
+  background-color: gold;
+  height: 20px;
+  position: absolute;
+  width: 20px;
+}

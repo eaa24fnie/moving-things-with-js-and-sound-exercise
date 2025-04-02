@@ -10,8 +10,10 @@ const movementSound = document.getElementById("movementSound");
 const gameoverSound = document.getElementById("gameoverSound");
 const dodger = document.getElementById("dodger");
 const gameContainer = dodger.parentElement;
+const object = document.getElementById("object");
 
-dodger.style.bottom = "200px";
+
+dodger.style.bottom = "180px";
 
 function playSoundOnMovement() {
     if (movementSound) {
@@ -27,15 +29,30 @@ function playGameOverSound() {
     }
 }
 
+function checkCollision() {
+    const dodgerRect = dodger.getBoundingClientRect();
+    const objectRect = object.getBoundingClientRect();
+
+    if (
+        dodgerRect.left < objectRect.right &&
+        dodgerRect.right > objectRect.left &&
+        dodgerRect.top < objectRect.bottom &&
+        dodgerRect.bottom > objectRect.top
+    ) {
+        object.style.display = "none";
+        
+    }
+}
+
   function moveDodgerLeft() {
     const leftNumbers = dodger.style.left.replace("px", "");
     const left = parseInt(leftNumbers, 10);
   
     if (left > 0) {
       dodger.style.left = `${left - 10}px`;
-      dodger.style.transform = "rotate(-180deg)";
       dodger.style.transform = "scaleX(-1)";
       playSoundOnMovement();
+      checkCollision();
     }  else {
         playGameOverSound();
     }
@@ -53,6 +70,7 @@ function playGameOverSound() {
       dodger.style.transform = "rotate(0deg)";
 
       playSoundOnMovement();
+      checkCollision();
     }  else {
         playGameOverSound();
     }
@@ -69,6 +87,7 @@ function moveDodgerUp() {
         dodger.style.bottom = `${bottom + 10}px`;
         dodger.style.transform = "rotate(-90deg)";
         playSoundOnMovement();
+        checkCollision();
     }  else {
         playGameOverSound();
     }
@@ -85,6 +104,7 @@ function moveDodgerDown() {
         dodger.style.bottom = `${bottom - 10}px`;
         dodger.style.transform = "rotate(90deg)";
         playSoundOnMovement();
+        checkCollision();
     }  else {
         playGameOverSound();
     }
@@ -95,7 +115,6 @@ function moveDodgerDown() {
       moveDodgerLeft();
     } else if (e.key === "ArrowRight") {
         moveDodgerRight();
-        
     } else if (e.key === "ArrowUp") {
         moveDodgerUp();
     } else if (e.key === "ArrowDown") {
